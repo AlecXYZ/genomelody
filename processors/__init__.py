@@ -1,0 +1,1 @@
+from .processor_fasta import process_fasta

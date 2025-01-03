@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Genomelody</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <!-- Header with navigation bar-->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">Genomelody</div>
+            <!-- Navigation bar-->
+            <div class="navigation-bar">
+                <button class="active-tab" onclick="navigate_to('index.html')">Home</button>
+                <button onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                <button onclick="navigate_to('player.html')">Player</button>
+            </div>
+            <!-- Quit button -->
+            <button class="quit-button" onclick="quit_app()">Quit</button>
+        </nav>
+    </header>
+
+    <!-- Main content-->
+    <main>
+        <div class="index-main-container">
+            <!-- Quit overlay -->
+            <div id="quit-overlay" class="quit-overlay hidden">
+                <div class="overlay-content">
+                    <h1>Application Closed</h1>
+                    <p>You can now close this tab manually.</p>
+                </div>
+            </div>
+    
+            <!-- Homepage -->
+            <div class="index-outside-box">
+                <div id="synthesizer-box" class="index-inside-box">
+                    <h1>Synthesizer</h1>
+                    <p>Transform DNA information from a FASTA file into sound using a chosen algorithm. After the conversion, it will be represented as MIDI and WAV audio files.</p>
+                    <button onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                </div>
+            </div>
+            <div class="index-outside-box">
+                <div id="player-box" class="index-inside-box">
+                    <h1>Piano Player</h1>
+                    <p>Play transformed DNA information as sound and visualize each note on a piano. All that is required are MIDI and WAV audio files generated from the synthesizer.</p>
+                    <button onclick="navigate_to('player.html')">Player</button>
+                </div>
+            </div>
+    </main>
+
+    <!-- Footer content-->
+    <footer>
+        <p>© Copyright, Developed by Alec Rybár, 2024–2025.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

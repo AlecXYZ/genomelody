@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player - Genomelody</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <!-- Header with navigation bar-->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">Genomelody</div>
+            <!-- Navigation bar-->
+            <div class="navigation-bar">
+                <button onclick="navigate_to('index.html')">Home</button>
+                <button onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                <button class="active-tab" onclick="navigate_to('player.html')">Player</button>
+            </div>
+            <!-- Quit button -->
+            <button class="quit-button" onclick="quit_app()">Quit</button>
+        </nav>
+    </header>
+
+    <!-- Main content-->
+    <main>
+        <div class="player-main-container">
+            <!-- Quit overlay -->
+            <div id="quit-overlay" class="quit-overlay hidden">
+                <div class="overlay-content">
+                    <h1>Application Closed</h1>
+                    <p>You can now close this tab manually.</p>
+                </div>
+            </div>
+    
+            <!-- Player -->
+            <div id="player-files-wrapper-box" class="player-wrapper-box">
+                <div id="player-midi-outside-box" class="player-outside-box">
+                    <!-- MIDI file -->
+                    <div id="player-midi-box" class="player-inside-box">
+                        <h1>MIDI File</h1>
+                        <form id="file_form">
+                            <label for="midi_file">Upload MIDI File:</label>
+                            <input type="file" id="midi_file" accept=".mid, .midi" required>
+                        </form>
+                    </div>
+                </div>
+                <div id="player-wav-outside-box" class="player-outside-box">
+                    <!-- WAV file -->
+                    <div id="player-wav-box" class="player-inside-box">
+                        <h1>WAV File</h1>
+                        <form id="file_form">
+                            <label for="wav_file">Upload WAV File:</label>
+                            <input type="file" id="wav_file" accept=".wav" required>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="player-piano-outside-box" class="player-outside-box">
+                <!-- Piano controls -->
+                <div id="player-piano-box" class="player-inside-box">
+                    <div class="piano-menu">
+                        <div class="progress-bar-container">
+                            <input type="range" id="progress_bar" min="0" value="0" step="1">
+                            <div class="time-display">
+                                <span id="current_time">0:00</span> / <span id="total_time">0:00</span>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button type="button" id="rewind_button">Rewind</button>
+                            <button type="button" id="play_pause_button">Start</button>
+                            <button type="button" id="forward_button">Forward</button>
+                        </div>
+                    </div>
+                    <!-- Piano keys -->
+                    <div class="piano">
+                        <div class="piano-corner"></div>
+                        <div class="key white" data-note="C3"></div>
+                        <div class="key black" data-note="C#3"></div>
+                        <div class="key white" data-note="D3"></div>
+                        <div class="key black" data-note="D#3"></div>
+                        <div class="key white" data-note="E3"></div>
+                        <div class="key white" data-note="F3"></div>
+                        <div class="key black" data-note="F#3"></div>
+                        <div class="key white" data-note="G3"></div>
+                        <div class="key black" data-note="G#3"></div>
+                        <div class="key white" data-note="A3"></div>
+                        <div class="key black" data-note="A#3"></div>
+                        <div class="key white" data-note="B3"></div>
+                        <div class="key white" data-note="C4"></div>
+                        <div class="key black" data-note="C#4"></div>
+                        <div class="key white" data-note="D4"></div>
+                        <div class="key black" data-note="D#4"></div>
+                        <div class="key white" data-note="E4"></div>
+                        <div class="key white" data-note="F4"></div>
+                        <div class="key black" data-note="F#4"></div>
+                        <div class="key white" data-note="G4"></div>
+                        <div class="key black" data-note="G#4"></div>
+                        <div class="key white" data-note="A4"></div>
+                        <div class="key black" data-note="A#4"></div>
+                        <div class="key white" data-note="B4"></div>
+                        <div class="key white" data-note="C5"></div>
+                        <div class="key black" data-note="C#5"></div>
+                        <div class="key white" data-note="D5"></div>
+                        <div class="key black" data-note="D#5"></div>
+                        <div class="key white" data-note="E5"></div>
+                        <div class="key white" data-note="F5"></div>
+                        <div class="key black" data-note="F#5"></div>
+                        <div class="key white" data-note="G5"></div>
+                        <div class="key black" data-note="G#5"></div>
+                        <div class="key white" data-note="A5"></div>
+                        <div class="key black" data-note="A#5"></div>
+                        <div class="key white" data-note="B5"></div>
+                        <div class="piano-corner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer content-->
+    <footer>
+        <p>© Copyright, Developed by Alec Rybár, 2024–2025.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

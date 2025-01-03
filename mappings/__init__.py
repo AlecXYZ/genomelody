@@ -1,0 +1,4 @@
+from .nucleotides_to_chromatic import map_chromatic
+from .nucleotides_to_chromatic import descript_chromatic
+from .nucleotides_to_diatonic import map_diatonic
+from .nucleotides_to_diatonic import descript_diatonic

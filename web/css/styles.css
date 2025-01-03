@@ -1,0 +1,704 @@
+:root {
+    --background-dark-color: #1e1e1e;
+    --background-light-color: #2c2c2c;
+    --background-lighter-color: #2e2e2e;
+    --background-faded: #1e1e1eee;
+    --text-white-color: #cccccc;
+    --text-grey-color: #777777;
+    --mint-color: #3d8271;
+    --wine-color: #772953;
+    --shadow-color: #1e1e1eee;
+    --black-key-color: #000000;
+    --white-key-color: #ffffff;
+}
+
+/* -----------------------Global styling across all pages----------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: var(--text-white-color);
+    font-size: 20px;
+}
+
+html, body {
+    /* Not responsible design (Desktop app) - Position fixed on minimal height and width */
+    width: 100vw;
+    height: 100vh;
+    min-width: 1850px;
+    min-height: 950px;
+    overflow: auto;
+    background-color: var(--background-lighter-color);
+    flex-direction: column;
+    display: flex;
+}
+
+header {
+    background-color: var(--background-dark-color);
+    border-bottom: 4px solid var(--mint-color);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 15px 40px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+}
+
+main {
+    flex: 1;
+}
+
+/* Navigation bar*/
+.logo {
+    font-weight: bold;
+    font-size: 2.35rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-bar {
+    display: flex;
+    gap: 75px;
+}
+
+.navigation-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+    transition: transform 0.1s ease;
+    font-size: 1.2rem;
+}
+
+.navigation-bar button:hover, .navigation-bar button:focus {
+    transform: scale(1.015);
+    border-top: 5px solid var(--mint-color);
+    border-bottom: 5px solid var(--wine-color);
+
+}
+
+.navigation-bar .active-tab {
+    border-top: 5px solid var(--mint-color);
+    border-bottom: 5px solid var(--wine-color);
+
+}
+
+/* Footer */
+footer {
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    background-color: var(--background-dark-color);
+    border-top: 4px solid var(--wine-color);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 20px 40px;
+}
+
+footer p {
+    font-size: 0.8rem;
+}
+
+/* Buttons */
+button {
+    background: var(--mint-color);
+    color: var(--text-white-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+button:hover, button:focus {
+    transform: scale(1.015);
+}
+
+/* Quit button */
+.quit-button {
+    background-color: var(--wine-color);
+    padding: 8px 20px;
+    margin-left: 190px;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* Quit overlay */
+.quit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-faded);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.quit-overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    text-align: center;
+    color: var(--text-white-color);
+}
+
+.overlay-content h1 {
+    font-size: 2.35rem;
+    color: var(--mint-color);
+    padding: 10px;
+}
+
+.overlay-content p {
+    font-size: 1.2rem;
+}
+
+/* ---------------------------------Index page---------------------------------- */
+/* Main container */
+.index-main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+/* Outside box */
+.index-outside-box {
+    border-radius: 30px;
+    background-color: var(--background-lighter-color);
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    width: 100%;
+}
+
+/* Inside box */
+.index-inside-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 20px;
+    gap: 25px;
+    height: 98%;
+    width: 97%;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: justify;
+    transition: transform 0.1s ease;
+}
+
+/*.index-inside-box:hover, .index-inside-box:focus {
+    transform: scale(1.005);
+}*/
+
+.index-inside-box h1 {
+    font-size: 2.35rem;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.index-inside-box p {
+    font-size: 1.2rem;
+    margin-bottom: 75px;
+}
+
+.index-inside-box button {
+    padding: 15px 20px;
+}
+
+/* ------------------------------Synthesizer page------------------------------- */
+/* Main container */
+.synthesizer-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+/* Wrapper box (left/right) */
+#synthesizer-algorithm-wrapper-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    width: 70%;
+    gap: 20px;
+}
+
+#synthesizer-output-wrapper-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
+    width: 30%;
+    gap: 20px;
+}
+
+/* Outside box (top/bottom on left/right) */
+#synthesizer-algorithm-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 65%;
+}
+
+#synthesizer-description-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 35%;
+}
+
+#synthesizer-output-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 75%;
+}
+
+#synthesizer-convert-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 25%;
+}
+
+/* Inside box (top/bottom on left/right) */
+#synthesizer-algorithm-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 96%;
+    width: 98%;
+    gap: 20px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#synthesizer-description-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    padding: 20px;
+    height: 96%;
+    width: 98%;
+    gap: 20px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#synthesizer-output-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 20px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#synthesizer-convert-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    transition: transform 0.1s ease;
+}
+
+/* Elements in inside boxeses */
+#synthesizer-convert-box button {
+    padding: 20px 10px;
+    font-size: 2.35rem;
+}
+
+.synthesizer-inside-box h1 {
+    font-size: 2.35rem;
+}
+
+.synthesizer-inside-box h2 {
+    font-size: 1.5rem;
+}
+
+#download_section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+#download_section h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+#download_section button {
+    display: block;
+    margin: 0 auto;
+    width: 240px;
+    height: 70px;
+    background-color: var(--wine-color);
+    transition: transform 0.1s ease;
+}
+
+#download_section button:disabled {
+    background-color: var(--background-faded);
+    transform: none;
+    cursor: default;
+}
+
+#synth_form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+#synth_form label {
+    display: flex;
+    flex-direction: column;
+    /* Half width of the form minus gap - it must be like table*/
+    width: calc(50% - 20px);
+    gap: 5px;
+    font-weight: bold;
+}
+
+#synth_form input, #synth_form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-grey-color);
+    background-color: var(--background-light-color);
+    color: var(--text-white-color);
+}
+
+#fasta_file, #algorithm_select, #bpm_select, #convert_wav {
+    cursor: pointer;
+}
+
+#convert_wav {
+    width: 20px;
+    height: 20px;
+}
+
+#synth_form label[for="convert_wav"] {
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#synthesizer-description-box p {
+    text-align: justify;
+}
+
+/* ---------------------------------Player page--------------------------------- */
+/* Main container */
+.player-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+/* Files wrapper box */
+#player-files-wrapper-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25%;
+    gap: 20px;
+}
+
+/* Files outside boxes */
+#player-midi-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 50%;
+    height: 100%;
+}
+
+#player-wav-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 50%;
+    height: 100%;
+}
+
+/* Files inside boxes */
+#player-midi-box, #player-wav-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 95%;
+    width: 98%;
+    gap: 20px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#player-midi-box h1, #player-wav-box h1{
+    font-size: 2.35rem;
+}
+
+#file_form label {
+    display: inline-block;
+    flex-direction: row;
+    gap: 5px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+#file_form input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid var(--text-grey-color);
+    background-color: var(--background-light-color);
+    color: var(--text-white-color);
+}
+
+#file_form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Piano outside box */
+#player-piano-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 60%;
+}
+
+/* Piano inside box */
+#player-piano-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 98%;
+    width: 99%;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: center;
+    transition: transform 0.1s ease;
+}
+
+.piano-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 100%;
+    gap: 40px;
+    background: var(--background-dark-color);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    text-align: center;
+    transition: transform 0.1s ease;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+#rewind_button, #forward_button {
+    height: 60px;
+    width: 150px;
+}
+
+#play_pause_button {
+    height: 60px;
+    width: 110px;
+}
+
+/* Piano keys */
+.piano {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.key {
+    position: relative;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: background 0.1s ease;
+}
+
+.piano-corner {
+    background-color: var(--background-dark-color);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 9.5%;
+    height: 100%;
+}
+
+.key.white {
+    background: var(--white-key-color);
+    border: 1px solid var(--text-white-color);
+    width: 13%;
+    height: 100%;
+    z-index: 1;
+}
+
+.key.black {
+    background: var(--black-key-color);
+    border: 1px solid var(--background-dark-color);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 40px;
+    height: 65%;
+    position: absolute;
+    z-index: 2;
+}
+
+/* Positions for black keys */
+.key.black[data-note="C#3"] {
+    left: 90px;
+}
+.key.black[data-note="D#3"] {
+    left: 150px;
+}
+.key.black[data-note="F#3"] {
+    left: 280px;
+}
+.key.black[data-note="G#3"] {
+    left: 340px;
+}
+.key.black[data-note="A#3"] {
+    left: 400px;
+}
+.key.black[data-note="C#4"] {
+    left: 530px;
+}
+.key.black[data-note="D#4"] {
+    left: 590px;
+}
+.key.black[data-note="F#4"] {
+    left: 720px;
+}
+.key.black[data-note="G#4"] {
+    left: 780px;
+}
+.key.black[data-note="A#4"] {
+    left: 840px;
+}
+.key.black[data-note="C#5"] {
+    left: 970px;
+}
+.key.black[data-note="D#5"] {
+    left: 1030px;
+}
+.key.black[data-note="F#5"] {
+    left: 1160px;
+}
+.key.black[data-note="G#5"] {
+    left: 1220px;
+}
+.key.black[data-note="A#5"] {
+    left: 1280px;
+}
+
+.key.active {
+    background: var(--mint-color);
+}

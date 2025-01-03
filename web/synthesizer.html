@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthesizer - Genomelody</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <!-- Header with navigation bar-->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">Genomelody</div>
+            <!-- Navigation bar-->
+            <div class="navigation-bar">
+                <button onclick="navigate_to('index.html')">Home</button>
+                <button class="active-tab" onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                <button onclick="navigate_to('player.html')">Player</button>
+            </div>
+            <!-- Quit button -->
+            <button class="quit-button" onclick="quit_app()">Quit</button>
+        </nav>
+    </header>
+
+    <!-- Main content-->
+    <main>
+        <div class="synthesizer-main-container">
+            <!-- Quit overlay -->
+            <div id="quit-overlay" class="quit-overlay hidden">
+                <div class="overlay-content">
+                    <h1>Application Closed</h1>
+                    <p>You can now close this tab manually.</p>
+                </div>
+            </div>
+    
+            <!-- Synthesizer -->
+            <div id="synthesizer-algorithm-wrapper-box" class="synthesizer-wrapper-box">
+                <div id="synthesizer-algorithm-outside-box" class="synthesizer-outside-box">
+                    <!-- Conversion settings -->
+                    <div id="synthesizer-algorithm-box" class="synthesizer-inside-box">
+                        <h1>Conversion Settings</h1>
+                        <p>Details of the DNA conversion, such as the algorithm, tempo, and range, can be edited here.</p>
+                        <form id="synth_form">
+                            <label for="fasta_file">
+                                Upload FASTA File:
+                                <input type="file" id="fasta_file" accept=".fasta, .fa, .fna" required>
+                            </label>
+
+                            <label for="algorithm_select">
+                                Select Algorithm:
+                                <select id="algorithm_select" required>
+                                    <option value="map_chromatic">Chromatic conversion</option>
+                                    <option value="map_diatonic">Diatonic conversion</option>
+                                </select>
+                            </label>
+
+                            <label for="lines_input">
+                                Enter Range of Conversion:
+                                <input type="number" id="lines_input" placeholder="Number of lines to read" required>
+                            </label>
+
+                            <label for="bpm_select">
+                                Select BPM:
+                                <select id="bpm_select" required>
+                                    <option value="40">40</option>
+                                    <option value="80">80</option>
+                                    <option value="120">120</option>
+                                    <option value="160">160</option>
+                                    <option value="200">200</option>
+                                    <option value="240">240</option>
+                                </select>
+                            </label>
+
+                            <label for="convert_wav">
+                                <input type="checkbox" id="convert_wav">
+                                Convert to WAV
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div id="synthesizer-description-outside-box" class="synthesizer-outside-box">
+                    <!-- Algorithm description -->
+                    <div id="synthesizer-description-box" class="synthesizer-inside-box">
+                        <h1>Algorithm Description</h1>
+                        <p>The algorithm parses lines of a file, containing nucleotides, into triplets. Each of the four individual nucleotides, as well as their pairs and triplets consisting of only one type of nucleotide, is assigned a note from the chromatic scale, which includes twelve notes in total.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="synthesizer-output-wrapper-box" class="synthesizer-wrapper-box">
+                <div id="synthesizer-output-outside-box" class="synthesizer-outside-box">
+                    <!-- Output -->
+                    <div id="synthesizer-output-box" class="synthesizer-inside-box">
+                        <h1>Output</h1>
+                        <p>Audio files can be downloaded here.</p>
+                        <div id="download_section">
+                            <h2>MIDI File</h2>
+                            <button id="download_midi" disabled>Download MIDI</button>
+                            <h2>WAV File</h2>
+                            <button id="download_wav" disabled>Download WAV</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="synthesizer-convert-outside-box" class="synthesizer-outside-box">
+                    <!-- Convert -->
+                    <div id="synthesizer-convert-box" class="synthesizer-inside-box">
+                        <button type="button" id="convert_button">Convert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer content-->
+    <footer>
+        <p>© Copyright, Developed by Alec Rybár, 2024–2025.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
