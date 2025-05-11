@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial - Genomelody</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <!-- Header with navigation bar-->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">Genomelody</div>
+            <!-- Navigation bar-->
+            <div class="navigation-bar">
+                <button onclick="navigate_to('index.html')">Home</button>
+                <button class="active-tab" onclick="navigate_to('tutorial.html')">Tutorial</button>
+                <button onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                <button onclick="navigate_to('comparator.html')">Comparator</button>
+                <button onclick="navigate_to('player.html')">Player</button>
+            </div>
+            <!-- Quit button -->
+            <button class="quit-button" onclick="quit_app()">Quit</button>
+        </nav>
+    </header>
+
+    <!-- Main content-->
+    <main id="tutorial-main">
+        <!-- Quit overlay -->
+        <div id="quit-overlay" class="quit-overlay hidden">
+            <div class="overlay-content">
+                <h1>Application Closed</h1>
+                <p>You can now close this tab manually.</p>
+            </div>
+        </div>
+
+        <!-- Alert overlay -->
+        <div id="alert-overlay" class="alert-overlay hidden">
+            <div class="alert-content">
+                <div class="alert-inside-box">
+                    <h1>Alert</h1>
+                    <div class="alert-text-box">
+                        <p id="alert-text">-</p>
+                        <button type="button" id="alert_ok_button">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="loading-content">
+                <div class="loading-inside-box">
+                    <h1 id="loading-overlay-title"></h1>
+                    <div class="loading-dots">
+                        <div class="loading-dot"></div>
+                        <div class="loading-dot"></div>
+                        <div class="loading-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tutorial page 1 -->
+        <div id="first-tutorial-container" class="tutorial-synthesizer-main-container">
+            <div id="tutorial-file-wrapper-box" class="tutorial-synthesizer-wrapper-box">
+                <div id="tutorial-file-outside-box" class="tutorial-synthesizer-outside-box">
+                    <!-- Upload file -->
+                    <div id="tutorial-file-box" class="tutorial-synthesizer-inside-box">
+                        <h1>Upload File</h1>
+                    
+                        <form class="tutorial_synth_form">
+                            <p>
+                                To get started, upload a DNA sequence in FASTA format. This file contains the nucleotide 
+                                data that will be transformed into music. After uploading your file, select the instrument 
+                                you'd like to use for playback. It will determine the tone and character of the resulting sound.
+                            </p>
+
+                            <label for="tutorial_fasta_file">
+                                Upload FASTA File:
+                                <input type="file" id="tutorial_fasta_file" accept=".fasta, .fa, .fna" required>
+                            </label>
+                    
+                            <label for="tutorial_instrument_select">
+                                Select Instrument:
+                                <select id="tutorial_instrument_select" required>
+                                    <option value="0" selected>Grand Piano</option>
+                                    <option value="25">Acoustic Guitar</option>
+                                    <option value="32">Acoustic Bass</option>
+                                    <option value="40">Violin</option>
+                                    <option value="56">Trumpet</option>
+                                    <option value="65">Alto Saxophone</option>
+                                    <option value="73">Flute</option>
+                                </select>
+                            </label>
+                    
+                            <p>
+                                Now, define the range of lines from the DNA sequence you want to convert. 
+                                Remember, the more lines you include, the longer the conversion process will take and 
+                                the longer the audio file will be.
+                            </p>
+                    
+                            <label for="tutorial_start_line">
+                                Start Line:
+                                <input type="number" id="tutorial_start_line" placeholder="Enter line number" required>
+                            </label>
+                    
+                            <label for="tutorial_stop_line">
+                                Stop Line:
+                                <input type="number" id="tutorial_stop_line" placeholder="Enter line number" required>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div id="tutorial-file-info-outside-box" class="tutorial-info-outside-box">
+                    <!-- File info -->
+                    <div id="tutorial-file-info-box" class="tutorial-info-inside-box">
+                        <h1>Details</h1>
+                        <div class="tutorial-fileinfo-table">
+                            <div class="tutorial-fileinfo-row">
+                                <h2 class="tutorial-fileinfo-label">File Name:</h2>
+                                <p class="tutorial-fileinfo-value" id="tutorial-file-name">-</p>
+                            </div>
+                            <div class="tutorial-fileinfo-row">
+                                <h2 class="tutorial-fileinfo-label">File Size:</h2>
+                                <p class="tutorial-fileinfo-value" id="tutorial-file-size">-</p>
+                            </div>
+                            <div class="tutorial-fileinfo-row">
+                                <h2 class="tutorial-fileinfo-label">Number of Lines:</h2>
+                                <p class="tutorial-fileinfo-value" id="tutorial-file-lines">-</p>
+                            </div>
+                            <div class="tutorial-fileinfo-row">
+                                <h2 class="tutorial-fileinfo-label">Number of Nucleotides:</h2>
+                                <p class="tutorial-fileinfo-value" id="tutorial-file-nucleotides">-</p>
+                            </div>
+                            <div class="tutorial-fileinfo-row">
+                                <h2 class="tutorial-fileinfo-label">Sample:</h2>
+                                <p class="tutorial-fileinfo-value" id="tutorial-file-sample">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Steps box -->
+            <div id="first-tutorial-steps-wrapper-box" class="tutorial-steps-wrapper-box">
+                <div id="first-tutorial-back-outside-box" class="tutorial-back-outside-box">
+                    <!-- Back -->
+                    <div id="first-tutorial-back-box" class="tutorial-back-inside-box">
+                        <button id="first_back_button" disabled>Back</button>
+                    </div>
+                </div>
+                <div id="first-tutorial-steps-outside-box" class="tutorial-steps-outside-box">
+                    <!-- Steps -->
+                    <div id="first-tutorial-steps-box" class="tutorial-steps-inside-box">
+                        <div class="step-box">
+                            <div class="step-display active">
+                                <label>1</label>
+                            </div>
+                            <label>Upload</label>
+                        </div>
+                        <div class="step-dots"></div>
+                        <div class="step-dots"></div>
+                        <div class="step-box">
+                            <div class="step-display">
+                                <label>2</label>
+                            </div>
+                            <label>Set Up</label>
+                        </div>
+                        <div class="step-dots"></div>
+                        <div class="step-dots"></div>
+                        <div class="step-box">
+                            <div class="step-display">
+                                <label>3</label>
+                            </div>
+                            <label>Download</label>
+                        </div>
+                        <div class="step-dots"></div>
+                        <div class="step-dots"></div>
+                        <div class="step-box">
+                            <div class="step-display">
+                                <label>4</label>
+                            </div>
+                            <label>Play</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="first-tutorial-next-outside-box" class="tutorial-next-outside-box">
+                    <!-- Next -->
+                    <div id="first-tutorial-next-box" class="tutorial-next-inside-box">
+                        <button id="first_next_button">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial page 2 -->
+        <div id="second-tutorial-container" class="tutorial-synthesizer-main-container hidden">
+            <div id="tutorial-settings-wrapper-box" class="tutorial-synthesizer-wrapper-box">
+                <div id="tutorial-left-column-wrapper" class="tutorial-left-column-wrapper">
+                    <div id="tutorial-settings-outside-box" class="tutorial-synthesizer-outside-box">
+                        <!-- Set up conversion-->
+                        <div id="tutorial-settings-box" class="tutorial-synthesizer-inside-box">
+                            <h1>Set Up Conversion</h1>
+                            <p>Choose an algorithm to determine the note assignment and set the tempo for playback speed.</p>
+
+                            <form id="tutorial-set-up-form" class="tutorial_synth_form">
+                                <label for="tutorial_algorithm_select">
+                                    Select Algorithm:
+                                    <select id="tutorial_algorithm_select" required>
+                                        <option value="map_diatonic" selected>Diatonic Conversion</option>
+                                        <option value="map_chromatic">Chromatic Conversion</option>
+                                        <option value="map_binary">Binary Conversion</option>
+                                    </select>
+                                </label>
+
+                                <label for="tutorial_bpm_select">
+                                    Select BPM:
+                                    <select id="tutorial_bpm_select" required>
+                                        <option value="40">40</option>
+                                        <option value="80">80</option>
+                                        <option value="120">120</option>
+                                        <option value="160" selected>160</option>
+                                        <option value="200">200</option>
+                                        <option value="240">240</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Description box -->
+                    <div id="tutorial-description-outside-box" class="tutorial-description-outside-box">
+                        <div id="tutorial-description-box" class="tutorial-description-inside-box">
+                            <h1>Algorithm Description</h1>
+                            <p id="tutorial-algorithm-description">
+                                The algorithm parses lines from a file containing nucleotide sequences into pairs. Each individual 
+                                nucleotide, as well as nucleotide pairs composed of a single repeated nucleotide (except TT), is assigned 
+                                a note from the diatonic scale, which consists of seven notes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tutorial-settings-info-outside-box" class="tutorial-info-outside-box">
+                    <!-- Mapping details -->
+                    <div id="tutorial-settings-info-box" class="tutorial-info-inside-box">
+                        <h1>Details</h1>
+                        <div class="tutorial-mapping-header-row">
+                            <div class="tutorial-mapping-header">Key</div>
+                            <div class="tutorial-mapping-header">Value</div>
+                        </div>
+
+                        <div class="tutorial-mapping-scroll-container">
+                            <div class="tutorial-mapping-table" id="tutorial-mapping-table">
+                                <div class="tutorial-mapping-row">
+                                    <div class="tutorial-mapping-key">A</div>
+                                    <div class="tutorial-mapping-transition">>>></div>
+                                    <div class="tutorial-mapping-value">C4</div>
+                                </div>
+                                <div class="tutorial-mapping-row">
+                                    <div class="tutorial-mapping-key">AA</div>
+                                    <div class="tutorial-mapping-transition">>>></div>
+                                    <div class="tutorial-mapping-value">D4</div>
+                                </div>
+                                <div class="tutorial-mapping-row">
+                                    <div class="tutorial-mapping-key">C</div>
+                                    <div class="tutorial-mapping-transition">>>></div>
+                                    <div class="tutorial-mapping-value">E4</div>
+                                </div>
+                                <div class="tutorial-mapping-row">
+                                    <div class="tutorial-mapping-key">CC</div>
+                                    <div class="tutorial-mapping-transition">>>></div>
+                                    <div class="tutorial-mapping-value">F4</div>
+                                </div>
+                                <div class="tutorial-mapping-row">
+                                    <div class="tutorial-mapping-key">G</div>
+                                    <div class="tutorial-mapping-transition">>>></div>
+                                    <div class="tutorial-mapping-value">G4</div>
+                                </div>
+                                <div class="tutorial-mapping-row">
+                                    <div class="tutorial-mapping-key">GG</div>
+                                    <div class="tutorial-mapping-transition">>>></div>
+                                    <div class="tutorial-mapping-value">A4</div>
+                                </div>
+                                <div class="tutorial-mapping-row">
+                                    <div class="tutorial-mapping-key">T</div>
+                                    <div class="tutorial-mapping-transition">>>></div>
+                                    <div class="tutorial-mapping-value">B4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Steps box -->
+            <div id="second-tutorial-steps-wrapper-box" class="tutorial-steps-wrapper-box">
+                <div id="second-tutorial-back-outside-box" class="tutorial-back-outside-box">
+                    <div id="second-tutorial-back-box" class="tutorial-back-inside-box">
+                        <button id="second_back_button">Back</button>
+                    </div>
+                </div>
+                <div id="second-tutorial-steps-outside-box" class="tutorial-steps-outside-box">
+                    <div id="second-tutorial-steps-box" class="tutorial-steps-inside-box">
+                        <div class="step-box">
+                            <div class="step-display activated">
+                                <label>1</label>
+                            </div>
+                            <label>Upload</label>
+                        </div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-box">
+                            <div class="step-display active">
+                                <label>2</label>
+                            </div>
+                            <label>Set Up</label>
+                        </div>
+                        <div class="step-dots"></div>
+                        <div class="step-dots"></div>
+                        <div class="step-box">
+                            <div class="step-display">
+                                <label>3</label>
+                            </div>
+                            <label>Download</label>
+                        </div>
+                        <div class="step-dots"></div>
+                        <div class="step-dots"></div>
+                        <div class="step-box">
+                            <div class="step-display">
+                                <label>4</label>
+                            </div>
+                            <label>Play</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="second-tutorial-next-outside-box" class="tutorial-next-outside-box">
+                    <div id="second-tutorial-next-box" class="tutorial-next-inside-box">
+                        <button id="second_next_button">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial page 3 -->
+        <div id="third-tutorial-container" class="tutorial-synthesizer-main-container hidden">
+            <div id="third-tutorial-wrapper-box" class="tutorial-synthesizer-wrapper-box">
+                <div id="third-tutorial-summary-outside-box" class="tutorial-synthesizer-outside-box">
+                    <!-- Download audio/Summary -->
+                    <div id="third-tutorial-summary-box" class="tutorial-synthesizer-inside-box">
+                        <h1>Download Audio</h1>
+                        <p>
+                            Review your choices in the summary below. When you're ready, download the output files for playback.
+                            In the next step, upload them to visualize and listen to DNA's unique patterns, transformed into music.
+                        </p>
+
+                        <div class="summary-table">
+                            <div class="summary-row">
+                                <h2 class="summary-label">File:</h2>
+                                <p class="summary-value" id="summary-file">-</p>
+                            </div>
+                            <div class="summary-row">
+                                <h2 class="summary-label">Instrument:</h2>
+                                <p class="summary-value" id="summary-instrument">-</p>
+                            </div>
+                            <div class="summary-row">
+                                <h2 class="summary-label">Algorithm:</h2>
+                                <p class="summary-value" id="summary-algorithm">-</p>
+                            </div>
+                            <div class="summary-row">
+                                <h2 class="summary-label">Tempo (BPM):</h2>
+                                <p class="summary-value" id="summary-bpm">-</p>
+                            </div>
+                            <div class="summary-row">
+                                <h2 class="summary-label">Start Line:</h2>
+                                <p class="summary-value" id="summary-start">-</p>
+                            </div>
+                            <div class="summary-row">
+                                <h2 class="summary-label">Stop Line:</h2>
+                                <p class="summary-value" id="summary-stop">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output -->
+                <div id="third-tutorial-output-outside-box" class="tutorial-info-outside-box">
+                    <div id="third-tutorial-output-box" class="tutorial-info-inside-box">
+                        <h1>Output</h1>
+                        <p>Audio files can be downloaded here.</p>
+                        <div id="tutorial-download-section">
+                            <h2>MIDI File</h2>
+                            <button id="tutorial_download_midi" disabled>Download MIDI</button>
+                            <h2>WAV File</h2>
+                            <button id="tutorial_download_wav" disabled>Download WAV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Steps box -->
+            <div id="third-tutorial-steps-wrapper-box" class="tutorial-steps-wrapper-box">
+                <div id="third-tutorial-back-outside-box" class="tutorial-back-outside-box">
+                    <div id="third-tutorial-back-box" class="tutorial-back-inside-box">
+                        <button id="third_back_button">Back</button>
+                    </div>
+                </div>
+                <div id="third-tutorial-steps-outside-box" class="tutorial-steps-outside-box">
+                    <div id="third-tutorial-steps-box" class="tutorial-steps-inside-box">
+                        <div class="step-box">
+                            <div class="step-display activated">
+                                <label>1</label>
+                            </div>
+                            <label>Upload</label>
+                        </div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-box">
+                            <div class="step-display activated">
+                                <label>2</label>
+                            </div>
+                            <label>Set Up</label>
+                        </div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-box">
+                            <div class="step-display active">
+                                <label>3</label>
+                            </div>
+                            <label>Download</label>
+                        </div>
+                        <div class="step-dots"></div>
+                        <div class="step-dots"></div>
+                        <div class="step-box">
+                            <div class="step-display">
+                                <label>4</label>
+                            </div>
+                            <label>Play</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="third-tutorial-next-outside-box" class="tutorial-next-outside-box">
+                    <div id="third-tutorial-next-box" class="tutorial-next-inside-box">
+                        <button id="third_next_button">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial page 4 -->
+        <div id="fourth-tutorial-container" class="tutorial-synthesizer-main-container hidden">
+            <div id="tutorial-player" class="player-main-container">
+                <!-- Player -->
+                <div id="tutorial-player-files-wrapper-box" class="player-wrapper-box">
+                    <div id="player-midi-outside-box" class="player-outside-box">
+                        <!-- MIDI file -->
+                        <div id="tutorial-player-midi-box" class="player-inside-box">
+                            <h1>MIDI File</h1>
+                            <form class="file_form">
+                                <label for="midi_file">Upload MIDI File:</label>
+                                <input type="file" id="midi_file" accept=".mid, .midi" required>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="player-wav-outside-box" class="player-outside-box">
+                        <!-- WAV file -->
+                        <div id="tutorial-player-wav-box" class="player-inside-box">
+                            <h1>WAV File</h1>
+                            <form class="file_form">
+                                <label for="wav_file">Upload WAV File:</label>
+                                <input type="file" id="wav_file" accept=".wav" required>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Piano controls -->
+                <div id="tutorial-piano-outside-box" class="player-outside-box">
+                    <div id="player-piano-box" class="player-inside-box">
+                        <div class="piano-menu">
+                            <div class="progress-bar-container">
+                                <input type="range" id="progress_bar" min="0" value="0" step="1">
+                                <div class="time-display">
+                                    <span id="current_time">0:00</span> / <span id="total_time">0:00</span>
+                                </div>
+                            </div>
+                            <div class="controls">
+                                <button type="button" id="rewind_button">Rewind</button>
+                                <button type="button" id="play_pause_button">Start</button>
+                                <button type="button" id="forward_button">Forward</button>
+                            </div>
+                        </div>
+                        <!-- Piano keys -->
+                        <div class="piano">
+                            <div class="piano-corner"></div>
+                            <div class="key white" data-note="C3"></div>
+                            <div class="key black" data-note="C#3"></div>
+                            <div class="key white" data-note="D3"></div>
+                            <div class="key black" data-note="D#3"></div>
+                            <div class="key white" data-note="E3"></div>
+                            <div class="key white" data-note="F3"></div>
+                            <div class="key black" data-note="F#3"></div>
+                            <div class="key white" data-note="G3"></div>
+                            <div class="key black" data-note="G#3"></div>
+                            <div class="key white" data-note="A3"></div>
+                            <div class="key black" data-note="A#3"></div>
+                            <div class="key white" data-note="B3"></div>
+                            <div class="key white" data-note="C4"></div>
+                            <div class="key black" data-note="C#4"></div>
+                            <div class="key white" data-note="D4"></div>
+                            <div class="key black" data-note="D#4"></div>
+                            <div class="key white" data-note="E4"></div>
+                            <div class="key white" data-note="F4"></div>
+                            <div class="key black" data-note="F#4"></div>
+                            <div class="key white" data-note="G4"></div>
+                            <div class="key black" data-note="G#4"></div>
+                            <div class="key white" data-note="A4"></div>
+                            <div class="key black" data-note="A#4"></div>
+                            <div class="key white" data-note="B4"></div>
+                            <div class="key white" data-note="C5"></div>
+                            <div class="key black" data-note="C#5"></div>
+                            <div class="key white" data-note="D5"></div>
+                            <div class="key black" data-note="D#5"></div>
+                            <div class="key white" data-note="E5"></div>
+                            <div class="key white" data-note="F5"></div>
+                            <div class="key black" data-note="F#5"></div>
+                            <div class="key white" data-note="G5"></div>
+                            <div class="key black" data-note="G#5"></div>
+                            <div class="key white" data-note="A5"></div>
+                            <div class="key black" data-note="A#5"></div>
+                            <div class="key white" data-note="B5"></div>
+                            <div class="piano-corner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Steps box -->
+            <div id="fourth-tutorial-steps-wrapper-box" class="tutorial-steps-wrapper-box">
+                <div id="fourth-tutorial-back-outside-box" class="tutorial-back-outside-box">
+                    <div id="fourth-tutorial-back-box" class="tutorial-back-inside-box">
+                        <button id="fourth_back_button">Back</button>
+                    </div>
+                </div>
+                <div id="fourth-tutorial-steps-outside-box" class="tutorial-steps-outside-box">
+                    <div id="fourth-tutorial-steps-box" class="tutorial-steps-inside-box">
+                        <div class="step-box">
+                            <div class="step-display activated">
+                                <label>1</label>
+                            </div>
+                            <label>Upload</label>
+                        </div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-box">
+                            <div class="step-display activated">
+                                <label>2</label>
+                            </div>
+                            <label>Set Up</label>
+                        </div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-box">
+                            <div class="step-display activated">
+                                <label>3</label>
+                            </div>
+                            <label>Download</label>
+                        </div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-dots activated"></div>
+                        <div class="step-box">
+                            <div class="step-display active">
+                                <label>4</label>
+                            </div>
+                            <label>Play</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="fourth-tutorial-next-outside-box" class="tutorial-next-outside-box">
+                    <div id="fourth-tutorial-next-box" class="tutorial-next-inside-box">
+                        <button id="fourth_next_button" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer content-->
+    <footer>
+        <p>© Copyright, Developed by Alec Rybár, 2024–2025.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

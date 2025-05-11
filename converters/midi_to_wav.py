@@ -9,7 +9,7 @@ def convert_to_wav(midi_path, wav_path):
         wav_path (str): Path to save the created WAV file.
     """
     # Initialize FluidSynth (External synthesizer to create WAV) with the soundfont (Bank of instrument sounds)
-    fs = FluidSynth('soundfont/soundfont.sf2')
+    fs = FluidSynth("soundfont/soundfont.sf2")
 
     # Convert MIDI to WAV
     fs.midi_to_audio(midi_path, wav_path)

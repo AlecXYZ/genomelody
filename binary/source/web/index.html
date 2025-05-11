@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Genomelody</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <!-- Header with navigation bar -->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">Genomelody</div>
+            <!-- Navigation bar -->
+            <div class="navigation-bar">
+                <button class="active-tab" onclick="navigate_to('index.html')">Home</button>
+                <button onclick="navigate_to('tutorial.html')">Tutorial</button>
+                <button onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                <button onclick="navigate_to('comparator.html')">Comparator</button>
+                <button onclick="navigate_to('player.html')">Player</button>
+            </div>
+            <!-- Quit button -->
+            <button class="quit-button" onclick="quit_app()">Quit</button>
+        </nav>
+    </header>
+    <main id="index-main">
+        <!-- Quit overlay -->
+        <div id="quit-overlay" class="quit-overlay hidden">
+            <div class="overlay-content">
+                <h1>Application Closed</h1>
+                <p>You can now close this tab manually.</p>
+            </div>
+        </div>
+    
+        <!-- Main content -->
+        <div class="index-main-container">
+            <h1 class="index-welcome">Discover the Sound of DNA</h1>
+    
+            <div class="index-boxes-container">
+                <div class="index-outside-box">
+                    <div class="index-inside-box">
+                        <h1>Tutorial</h1>
+                        <p class="index-feature-description">
+                            Follow a guided tutorial that walks you through the process of transforming DNA sequences into music.
+                            This mode combines the Synthesizer and Player tools with more details explanations.
+                        </p>
+                        <button id="index_tutorial_button" onclick="navigate_to('tutorial.html')">Tutorial</button>
+                    </div>
+                </div>
+                <div class="index-outside-box">
+                    <div class="index-inside-box">
+                        <h1>Synthesizer</h1>
+                        <p class="index-feature-description">
+                            Convert DNA sequence from FASTA file into music by selecting from multiple mapping algorithms, tempo settings, 
+                            and instrument sounds. The tool generates both MIDI and WAV files.
+                        </p>
+                        <button id="index_synth_button" onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="index-boxes-container">
+                <div class="index-outside-box">
+                    <div class="index-inside-box">
+                        <h1>Comparator</h1>
+                        <p class="index-feature-description">
+                            Compare two DNA sequences to find their differences, then generate audio where corresponding notes from each 
+                            sequence are played simultaneously to highlight the contrast.
+                        </p>
+                        <button id="index_comp_button" onclick="navigate_to('comparator.html')">Comparator</button>
+                    </div>
+                </div>
+                <div class="index-outside-box">
+                    <div class="index-inside-box">
+                        <h1>Player</h1>
+                        <p class="index-feature-description">
+                            Load and play your generated MIDI and WAV files in the Player, which includes a piano visualization. 
+                            This tool allows you to experience DNA music both audibly and visually.
+                        </p>
+                        <button id="index_player_button" onclick="navigate_to('player.html')">Player</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© Copyright, Developed by Alec Rybár, 2024–2025.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

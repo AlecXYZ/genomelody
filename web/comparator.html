@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparator - Genomelody</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <!-- Header with navigation bar-->
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo">Genomelody</div>
+            <!-- Navigation bar-->
+            <div class="navigation-bar">
+                <button onclick="navigate_to('index.html')">Home</button>
+                <button onclick="navigate_to('tutorial.html')">Tutorial</button>
+                <button onclick="navigate_to('synthesizer.html')">Synthesizer</button>
+                <button class="active-tab" onclick="navigate_to('comparator.html')">Comparator</button>
+                <button onclick="navigate_to('player.html')">Player</button>
+            </div>
+            <!-- Quit button -->
+            <button class="quit-button" onclick="quit_app()">Quit</button>
+        </nav>
+    </header>
+
+    <!-- Main content-->
+    <main>
+        <div class="comparator-main-container">
+            <!-- Quit overlay -->
+            <div id="quit-overlay" class="quit-overlay hidden">
+                <div class="overlay-content">
+                    <h1>Application Closed</h1>
+                    <p>You can now close this tab manually.</p>
+                </div>
+            </div>
+
+            <!-- Alert overlay -->
+            <div id="alert-overlay" class="alert-overlay hidden">
+                <div class="alert-content">
+                    <div class="alert-inside-box">
+                        <h1>Alert</h1>
+                        <div class="alert-text-box">
+                            <p id="alert-text">-</p>
+                            <button type="button" id="alert_ok_button">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading overlay -->
+            <div id="loading-overlay" class="loading-overlay hidden">
+                <div class="loading-content">
+                    <div class="loading-inside-box">
+                        <h1 id="loading-overlay-title">-</h1>
+                        <div class="loading-dots">
+                            <div class="loading-dot"></div>
+                            <div class="loading-dot"></div>
+                            <div class="loading-dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Mapping overlay -->
+            <div id="mapping-overlay" class="mapping-overlay hidden">
+                <div class="mapping-content">
+                    <div class="mapping-inside-box">
+                        <h1>Conversion Details</h1>
+                        <div class="mapping-header-row">
+                            <div class="mapping-header">Key</div>
+                            <div class="mapping-header">Value</div>
+                        </div>
+                        <div class="mapping-scroll-container">
+                            <div class="mapping-table" id="mapping-table">
+                                <div class="mapping-row">
+                                    <div class="mapping-key">A</div>
+                                    <div class="mapping-transition">>>></div>
+                                    <div class="mapping-value">C4</div>
+                                </div>
+                                <div class="mapping-row">
+                                    <div class="mapping-key">AA</div>
+                                    <div class="mapping-transition">>>></div>
+                                    <div class="mapping-value">D4</div>
+                                </div>
+                                <div class="mapping-row">
+                                    <div class="mapping-key">C</div>
+                                    <div class="mapping-transition">>>></div>
+                                    <div class="mapping-value">E4</div>
+                                </div>
+                                <div class="mapping-row">
+                                    <div class="mapping-key">CC</div>
+                                    <div class="mapping-transition">>>></div>
+                                    <div class="mapping-value">F4</div>
+                                </div>
+                                <div class="mapping-row">
+                                    <div class="mapping-key">G</div>
+                                    <div class="mapping-transition">>>></div>
+                                    <div class="mapping-value">G4</div>
+                                </div>
+                                <div class="mapping-row">
+                                    <div class="mapping-key">GG</div>
+                                    <div class="mapping-transition">>>></div>
+                                    <div class="mapping-value">A4</div>
+                                </div>
+                                <div class="mapping-row">
+                                    <div class="mapping-key">T</div>
+                                    <div class="mapping-transition">>>></div>
+                                    <div class="mapping-value">B4</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="mapping_ok_button">OK</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- File info overlay -->
+            <div id="fileinfo-overlay" class="fileinfo-overlay hidden">
+                <div class="dual-fileinfo-content">
+                    <div class="dual-fileinfo-inside-box">
+                        <h1>File Details</h1>
+                        <div class="dual-fileinfo-table">
+                            <div class="dual-fileinfo-header-row">
+                                <div class="dual-fileinfo-column-header"></div>
+                                <div class="dual-fileinfo-column-header">First File</div>
+                                <div class="dual-fileinfo-column-header">Second File</div>
+                            </div>
+                            <div class="dual-fileinfo-row">
+                                <h2 class="dual-fileinfo-label">File Name:</h2>
+                                <p class="dual-fileinfo-value" id="fileinfo-name-1">-</p>
+                                <p class="dual-fileinfo-value" id="fileinfo-name-2">-</p>
+                            </div>
+                            <div class="dual-fileinfo-row">
+                                <h2 class="dual-fileinfo-label">File Size:</h2>
+                                <p class="dual-fileinfo-value" id="fileinfo-size-1">-</p>
+                                <p class="dual-fileinfo-value" id="fileinfo-size-2">-</p>
+                            </div>
+                            <div class="dual-fileinfo-row">
+                                <h2 class="dual-fileinfo-label">Number of Lines:</h2>
+                                <p class="dual-fileinfo-value" id="fileinfo-lines-1">-</p>
+                                <p class="dual-fileinfo-value" id="fileinfo-lines-2">-</p>
+                            </div>
+                            <div class="dual-fileinfo-row">
+                                <h2 class="dual-fileinfo-label">Number of Nucleotides:</h2>
+                                <p class="dual-fileinfo-value" id="fileinfo-nucleotides-1">-</p>
+                                <p class="dual-fileinfo-value" id="fileinfo-nucleotides-2">-</p>
+                            </div>
+                            <div class="dual-fileinfo-row">
+                                <h2 class="dual-fileinfo-label">Sample:</h2>
+                                <p class="dual-fileinfo-value" id="fileinfo-sample-1">-</p>
+                                <p class="dual-fileinfo-value" id="fileinfo-sample-2">-</p>
+                            </div>
+                        </div>
+                        <button type="button" id="fileinfo_ok_button">OK</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Advanced settings overlay -->
+            <div id="advanced-overlay" class="advanced-overlay hidden">
+                <div id="advanced-comparator-content" class="advanced-content">
+                    <div class="advanced-inside-box">
+                        <h1>Advanced Options</h1>
+    
+                        <label for="algorithm_select">
+                            Select Algorithm:
+                            <select id="algorithm_select" required>
+                                <option value="map_diatonic" selected>Diatonic Conversion</option>
+                                <option value="map_chromatic">Chromatic Conversion</option>
+                                <option value="map_binary">Binary Conversion</option>
+                            </select>
+                        </label>
+    
+                        <label for="instrument_select">
+                            Select Instrument:
+                            <select id="instrument_select" required>
+                                <option value="0" selected>Grand Piano</option>
+                                <option value="25">Acoustic Guitar</option>
+                                <option value="32">Acoustic Bass</option>
+                                <option value="40">Violin</option>
+                                <option value="56">Trumpet</option>
+                                <option value="65">Alto Saxophone</option>
+                                <option value="73">Flute</option>
+                            </select>
+                        </label>
+    
+                        <label for="advanced_bpm_select">
+                            Select Tempo (BPM):
+                            <select id="advanced_bpm_select" required>
+                                <option value="40">40</option>
+                                <option value="80">80</option>
+                                <option value="120">120</option>
+                                <option value="160" selected>160</option>
+                                <option value="200">200</option>
+                                <option value="240">240</option>
+                            </select>
+                        </label>
+    
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="advanced_convert_wav" checked>
+                            <label for="advanced_convert_wav">Convert to WAV</label>
+                        </div>
+    
+                        <button type="button" id="advanced_ok_button">OK</button>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Comparator -->
+            <div id="comparator-algorithm-wrapper-box" class="comparator-wrapper-box">
+                <div id="comparator-algorithm-outside-box" class="comparator-outside-box">
+                    <!-- Comparison settings -->
+                    <div id="comparator-algorithm-box" class="comparator-inside-box">
+                        <div class="synth-header">
+                            <h1>Comparator</h1>
+                            <div class="synth-header-buttons">
+                                <button type="button" id="file_info">File</button>
+                                <button type="button" id="advanced_settings">Options</button>
+                            </div>
+                        </div>
+                        <p>Details of the DNA comparison, such as the range or other options, can be edited here.</p>
+                        <form id="comparator_form">
+                            <label for="fasta_file_1">
+                                Upload First FASTA File:
+                                <input type="file" id="fasta_file_1" accept=".fasta, .fa, .fna" required>
+                            </label>
+    
+                            <label for="fasta_file_2">
+                                Upload Second FASTA File:
+                                <input type="file" id="fasta_file_2" accept=".fasta, .fa, .fna" required>
+                            </label>
+    
+                            <label for="start_nucleotide">
+                                Start Nucleotide:
+                                <input type="number" id="start_nucleotide" placeholder="Enter nucleotide number" required>
+                            </label>
+    
+                            <label for="stop_nucleotide">
+                                Stop Nucleotide:
+                                <input type="number" id="stop_nucleotide" placeholder="Enter nucleotide number" required>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <div id="comparator-description-outside-box" class="comparator-outside-box">
+                    <!-- Algorithm description -->
+                    <div id="description-box" class="comparator-inside-box">
+                        <div class="synth-header">
+                            <h1>Algorithm Details</h1>
+                            <div class="synth-header-buttons">
+                                <button type="button" id="show_details">More</button>
+                            </div>
+                        </div>
+                        <p>
+                            The algorithm parses lines from a file containing nucleotide sequences into pairs. Each individual 
+                            nucleotide, as well as nucleotide pairs composed of a single repeated nucleotide (except TT), is assigned 
+                            a note from the diatonic scale, which consists of seven notes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="comparator-output-wrapper-box" class="comparator-wrapper-box">
+                <div id="comparator-output-outside-box" class="comparator-outside-box">
+                    <!-- Output -->
+                    <div id="comparator-output-box" class="comparator-inside-box">
+                        <h1>Output</h1>
+                        <p>Audio files can be downloaded here.</p>
+                        <div id="download_section">
+                            <h2>MIDI File</h2>
+                            <button id="download_midi" disabled>Download MIDI</button>
+                            <h2>WAV File</h2>
+                            <button id="download_wav" disabled>Download WAV</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="comparator-convert-outside-box" class="comparator-outside-box">
+                    <!-- Compare -->
+                    <div id="comparator-convert-box" class="comparator-inside-box">
+                        <button type="button" id="compare_button">Compare</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer content-->
+    <footer>
+        <p>© Copyright, Developed by Alec Rybár, 2024–2025.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

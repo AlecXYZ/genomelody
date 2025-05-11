@@ -1,0 +1,2176 @@
+:root {
+    --background-dark-color: #1e1e1e;
+    --background-light-color: #2c2c2c;
+    --background-lighter-color: #2e2e2e;
+    --background-faded: #1e1e1eee;
+    --background-overlays: #000000b3;
+    --text-white-color: #cccccc;
+    --text-grey-color: #777777;
+    --mint-color: #3d8271;
+    --wine-color: #772953;
+    --shadow-color: #1e1e1eee;
+    --black-key-color: #000000;
+    --white-key-color: #ffffff;
+}
+
+/* -----------------------Global styling across all pages----------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: var(--text-white-color);
+    font-size: 21px;
+}
+
+main p {
+    font-size: 1rem;
+    word-break: break-word;
+    hyphens: auto;
+    line-height: 1.55;
+}
+
+html, body {
+    /* Responsive design (Desktop app) - Position fixed on minimal height and width */
+    min-height: 900px;
+    min-width: 1300px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-lighter-color);
+    flex-direction: column;
+    display: flex;
+}
+
+header {
+    background-color: var(--background-dark-color);
+    border-bottom: 4px solid var(--mint-color);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 15px 40px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+}
+
+main {
+    flex: 1;
+}
+
+/* Navigation bar*/
+.logo {
+    font-weight: bold;
+    font-size: 2.35rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    gap: 10px;
+}
+
+.navigation-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+    transition: transform 0.1s ease;
+    font-size: 1.2rem;
+}
+
+.navigation-bar button:hover, .navigation-bar button:focus {
+    transform: scale(1.015);
+    border-top: 5px solid var(--mint-color);
+    border-bottom: 5px solid var(--wine-color);
+
+}
+
+.navigation-bar .active-tab {
+    border-top: 5px solid var(--mint-color);
+    border-bottom: 5px solid var(--wine-color);
+
+}
+
+/* Footer */
+footer {
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    background-color: var(--background-dark-color);
+    border-top: 4px solid var(--wine-color);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 20px 40px;
+}
+
+footer p {
+    font-size: 0.8rem;
+}
+
+/* Buttons */
+button {
+    background: var(--mint-color);
+    color: var(--text-white-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+button:hover, button:focus {
+    transform: scale(1.015);
+}
+
+/* Quit button */
+.quit-button {
+    background-color: var(--wine-color);
+    padding: 8px 20px;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* Quit overlay */
+.quit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-faded);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.quit-overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    text-align: center;
+    color: var(--text-white-color);
+}
+
+.overlay-content h1 {
+    font-size: 2.35rem;
+    color: var(--mint-color);
+    padding: 10px;
+}
+
+.overlay-content p {
+    font-size: 1.2rem;
+}
+
+/* ---------------------------------Index page---------------------------------- */
+/* Main container */
+.index-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 90%;
+    gap: 20px;
+}
+
+#index-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+/* Welcome title */
+.index-welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    height: 15%;
+}
+
+/* Container for boxes */
+.index-boxes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 42.5%;
+}
+
+/* Outside box */
+.index-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    height: 100%;
+    width: 50%;
+}
+
+/* Inside box */
+.index-inside-box {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    height: 96%;
+    width: 98%;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+}
+
+/* Inside elements */
+.index-inside-box h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.index-inside-box p {
+    height: 100%;
+    text-align: justify;
+    overflow-y: auto;
+}
+
+.index-inside-box button {
+    align-self: flex-end;
+    width: 190px;
+    height: 60px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    background-color: var(--mint-color);
+    color: var(--text-white-color);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+#index_tutorial_button, #index_player_button {
+    background-color: var(--wine-color);
+}
+
+/* ------------------------------Synthesizer page------------------------------- */
+/* Main container */
+.synthesizer-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+/* Synthesizer wrapper boxes (left/right) */
+#synthesizer-algorithm-wrapper-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 70%;
+    gap: 20px;
+}
+
+#synthesizer-output-wrapper-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 30%;
+    gap: 20px;
+}
+
+/* Synthesizer outside boxes (top/bottom on left/right) */
+#synthesizer-algorithm-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 63%;
+}
+
+#synthesizer-description-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 37%;
+}
+
+#synthesizer-output-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 75%;
+}
+
+#synthesizer-convert-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 25%;
+}
+
+/* Synthesizer inside box (top/bottom on left/right) */
+#synthesizer-algorithm-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 96%;
+    width: 98%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#description-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    height: 96%;
+    width: 98%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#synthesizer-output-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#synthesizer-convert-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 10px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    transition: transform 0.1s ease;
+}
+
+/* Elements in inside boxes */
+#synthesizer-convert-box button {
+    padding: 20px 10px;
+    font-size: 2.35rem;
+}
+
+.synthesizer-inside-box h1 {
+    font-size: 2.35rem;
+}
+
+.synthesizer-inside-box h2 {
+    font-size: 1.5rem;
+}
+
+#download_section {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+#download_section h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+#download_section button {
+    display: block;
+    margin: 0 auto;
+    width: 240px;
+    height: 70px;
+    background-color: var(--wine-color);
+    transition: transform 0.1s ease;
+}
+
+#download_section button:disabled {
+    background-color: var(--background-faded);
+    transform: none;
+    cursor: default;
+}
+
+#synth_form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+#synth_form label {
+    display: flex;
+    flex-direction: column;
+    /* Half width of the form minus gap - it must be like table */
+    width: calc(50% - 30px);
+    gap: 5px;
+    font-weight: bold;
+}
+
+#synth_form input, #synth_form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-grey-color);
+    background-color: var(--background-light-color);
+    color: var(--text-white-color);
+    height: 55px;
+}
+
+#fasta_file, #algorithm_select {
+    cursor: pointer;
+}
+
+#description-box p {
+    text-align: justify;
+    overflow-y: auto;
+}
+
+.synth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.synth-header h1 {
+    margin: 0;
+    font-size: 2.35rem;
+}
+
+.synth-header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.synth-header-buttons button {
+    height: 50px;
+    width: 120px;
+    padding: 10px 15px;
+    font-size: 1.05rem;
+    background-color: var(--wine-color);
+    border: none;
+    border-radius: 15px;
+    color: var(--text-white-color);
+    cursor: pointer;
+    text-align: center;
+}
+
+#file_info {
+    height: 49px;
+    width: 90px;
+    background-color: var(--mint-color);
+}
+
+#start_line, #stop_line {
+    cursor: text;
+}
+
+#instrument_select, #advanced_bpm_select, #advanced_convert_wav {
+    cursor: pointer;
+}
+
+#synth_form input:focus, #synth_form select:focus {
+    outline: none;
+    border: 2px solid var(--mint-color);
+}
+
+.advanced-inside-box input:focus, .advanced-inside-box select:focus {
+    outline: none;
+    border: 2px solid var(--mint-color);
+}
+
+/* Alert overlay */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-overlays);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-content {
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    width: 800px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-inside-box {
+    background-color: var(--background-lighter-color);
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    width: 97%;
+    height: 96%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alert-text-box {
+    border-top: 2px solid var(--mint-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    overflow-y: auto;
+    width: 90%;
+    height: 100%;
+}
+
+.alert-inside-box h1 {
+    font-size: 2.35rem;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.alert-text-box p {
+    font-size: 1.2rem;
+    align-self: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.alert-inside-box button {
+    min-width: 150px;
+    font-size: 1.5rem;
+    background-color: var(--mint-color);
+    border: none;
+    border-radius: 15px;
+    color: var(--text-white-color);
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+}
+
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-overlays);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-content {
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    width: 650px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-inside-box {
+    background-color: var(--background-lighter-color);
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    width: 97%;
+    height: 94%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading-overlay-title {
+    font-size: 2.35rem;
+    color: var(--text-white-color);
+    margin-bottom: 25px;
+}
+
+/* Loading animation */
+.loading-dots {
+    display: flex;
+    gap: 20px;
+}
+
+.loading-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 200px;
+    margin-bottom: 25px;
+    background-color: var(--mint-color);
+    animation: dot-flash 1.4s infinite;
+}
+
+.loading-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dot-flash {
+    0%, 80%, 100% {
+        background-color: var(--mint-color);
+    }
+    40% {
+        background-color: var(--wine-color);
+    }
+}
+
+/* Advanced settings overlay */
+.advanced-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-overlays);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.advanced-content {
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    width: 550px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.advanced-inside-box {
+    background-color: var(--background-lighter-color);
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    width: 96%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    overflow-y: auto;
+}
+
+.advanced-inside-box h1 {
+    font-size: 2.35rem;
+    align-self: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.advanced-inside-box label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-weight: bold;
+    width: 325px;
+}
+
+.advanced-inside-box select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-grey-color);
+    background-color: var(--background-light-color);
+    color: var(--text-white-color);
+    height: 55px;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 325px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.checkbox-wrapper label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--text-white-color);
+}
+
+.advanced-inside-box button {
+    min-width: 150px;
+    font-size: 1.5rem;
+    background-color: var(--mint-color);
+    border: none;
+    border-radius: 15px;
+    color: var(--text-white-color);
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* File info overlay */
+.fileinfo-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-overlays);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fileinfo-content {
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    width: 550px;
+    height: 510px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fileinfo-inside-box {
+    background-color: var(--background-lighter-color);
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    width: 96%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.fileinfo-inside-box h1 {
+    font-size: 2.35rem;
+    align-self: center;
+}
+
+.fileinfo-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--mint-color);
+}
+
+.fileinfo-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.fileinfo-label {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.fileinfo-value {
+    font-size: 1.2rem;
+    text-align: right;
+    color: var(--text-white-color);
+}
+
+.fileinfo-inside-box button {
+    min-width: 150px;
+    font-size: 1.5rem;
+    background-color: var(--mint-color);
+    border: none;
+    border-radius: 15px;
+    color: var(--white-key-color);
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Mapping details overlay */
+.mapping-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-overlays);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapping-content {
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    width: 550px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapping-inside-box {
+    background-color: var(--background-lighter-color);
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    width: 96%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+.mapping-header-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    gap: 140px;
+    border-bottom: 2px solid var(--mint-color);
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+
+.mapping-scroll-container {
+    width: 85%;
+    height: 360px;
+    overflow-y: auto;
+    border-bottom: 2px solid var(--wine-color);
+    display: flex;
+    justify-content: center;
+}
+
+.mapping-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.mapping-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.mapping-header {
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    width: 100px;
+}
+
+.mapping-inside-box h1 {
+    font-size: 2.35rem;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.mapping-key, .mapping-transition, .mapping-value {
+    font-size: 1.2rem;
+    color: var(--text-white-color);
+    text-align: center;
+    width: 100px;
+}
+
+.mapping-inside-box button {
+    min-width: 150px;
+    font-size: 1.5rem;
+    background-color: var(--mint-color);
+    border: none;
+    border-radius: 15px;
+    color: var(--white-key-color);
+    cursor: pointer;
+    margin-top: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ---------------------------------Player page--------------------------------- */
+/* Main container */
+.player-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+/* Files wrapper box */
+#player-files-wrapper-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 28%;
+    gap: 20px;
+}
+
+/* Files outside boxes */
+#player-midi-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 50%;
+    height: 100%;
+}
+
+#player-wav-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 50%;
+    height: 100%;
+}
+
+/* Files inside boxes */
+#player-midi-box, #player-wav-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 95%;
+    width: 98%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+/* Inside elements */
+#player-midi-box h1, #player-wav-box h1{
+    font-size: 2.35rem;
+}
+
+.file_form label {
+    display: inline-block;
+    flex-direction: row;
+    gap: 5px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.file_form input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid var(--text-grey-color);
+    background-color: var(--background-light-color);
+    color: var(--text-white-color);
+    height: 55px
+}
+
+.file_form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.file_form input:focus, .file_form select:focus {
+    outline: none;
+    border: 2px solid var(--mint-color);
+}
+
+/* Piano outside box */
+#player-piano-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 60%;
+}
+
+/* Piano inside box */
+#player-piano-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 98%;
+    width: 99%;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: center;
+    transition: transform 0.1s ease;
+}
+
+.piano-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    width: 100%;
+    gap: 40px;
+    background: var(--background-dark-color);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    text-align: center;
+    transition: transform 0.1s ease;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+#rewind_button, #forward_button {
+    height: 60px;
+    width: 150px;
+    background-color: var(--wine-color);
+}
+
+#play_pause_button {
+    height: 60px;
+    width: 110px;
+    background-color: var(--mint-color);
+}
+
+/* Piano keys */
+.piano {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.key {
+    position: relative;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: background 0.1s ease;
+}
+
+.piano-corner {
+    background-color: var(--background-dark-color);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 9.5%;
+    height: 100%;
+}
+
+.key.white {
+    background: var(--white-key-color);
+    border: 1px solid var(--text-white-color);
+    width: 13%;
+    height: 100%;
+    z-index: 1;
+}
+
+.key.black {
+    background: var(--black-key-color);
+    border: 1px solid var(--background-dark-color);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    width: 3%;
+    height: 65%;
+    position: absolute;
+    z-index: 2;
+}
+
+/* Positions for black keys (1% = 14.285714286px) */
+.key.black[data-note="C#3"] {
+    left: 6.3%;
+}
+.key.black[data-note="D#3"] {
+    left: 10.5%;
+}
+.key.black[data-note="F#3"] {
+    left: 19.6%;
+}
+.key.black[data-note="G#3"] {
+    left: 24%;
+}
+.key.black[data-note="A#3"] {
+    left: 28.4%;
+}
+.key.black[data-note="C#4"] {
+    left: 37.5%;
+}
+.key.black[data-note="D#4"] {
+    left: 41.7%;
+}
+.key.black[data-note="F#4"] {
+    left: 50.8%;
+}
+.key.black[data-note="G#4"] {
+    left: 55.2%;
+}
+.key.black[data-note="A#4"] {
+    left: 59.6%;
+}
+.key.black[data-note="C#5"] {
+    left: 68.7%;
+}
+.key.black[data-note="D#5"] {
+    left: 72.9%;
+}
+.key.black[data-note="F#5"] {
+    left: 82%;
+}
+.key.black[data-note="G#5"] {
+    left: 86.4%;
+}
+.key.black[data-note="A#5"] {
+    left: 90.8%;
+}
+
+.key.active {
+    background: var(--mint-color);
+}
+
+/* -------------------------------Comparator page------------------------------- */
+/* Main container */
+.comparator-main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+/* Comparator wrapper boxes (left/right) */
+#comparator-algorithm-wrapper-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 70%;
+    gap: 20px;
+}
+
+#comparator-output-wrapper-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 30%;
+    gap: 20px;
+}
+
+/* Comparator outside boxes (top/bottom on left/right) */
+#comparator-algorithm-outside-box {
+    height: 63%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+}
+
+#comparator-description-outside-box {
+    height: 37%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+}
+
+#comparator-output-outside-box {
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+}
+
+#comparator-convert-outside-box {
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+}
+
+/* Comparator inside box (top/bottom on left/right) */
+#comparator-algorithm-box {
+    width: 98%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 96%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    transition: transform 0.1s ease;
+    text-align: left;
+}
+
+#comparator-output-box {
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    transition: transform 0.1s ease;
+    text-align: left;
+}
+
+#comparator-convert-box {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 10px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    transition: transform 0.1s ease;
+    text-align: left;
+}
+
+/* Inside elements */
+.comparator-inside-box h1 {
+    font-size: 2.35rem;
+}
+
+.comparator-inside-box h2 {
+    font-size: 1.5rem;
+}
+
+.synth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.synth-header h1 {
+    margin: 0;
+    font-size: 2.35rem;
+}
+
+#comparator_form {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    gap: 30px;
+    width: 100%;
+}
+
+#comparator_form label {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 30px);
+    gap: 5px;
+    font-weight: bold;
+}
+
+#comparator_form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-grey-color);
+    background-color: var(--background-light-color);
+    color: var(--text-white-color);
+    height: 55px;
+}
+
+#description-box p {
+    text-align: justify;
+}
+
+#comparator_form input:focus, #comparator_form select:focus {
+    outline: none;
+    border: 2px solid var(--mint-color);
+}
+
+#fasta_file_1, #fasta_file_2, #algorithm_select, #instrument_select, #advanced_bpm_select, #advanced_convert_wav {
+    cursor: pointer;
+}
+
+#start_nucleotide, #stop_nucleotide {
+    cursor: text;
+}
+
+#comparator-convert-box button {
+    width: 100%;
+    font-size: 2.35rem;
+    padding: 20px 10px;
+    background-color: var(--wine-color);
+    border: none;
+    border-radius: 20px;
+    color: var(--text-white-color);
+}
+
+/* Advanced settings overlay - comparator */
+#advanced-comparator-content {
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    width: 550px;
+    height: 620px;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Dual file info overlay */
+.dual-fileinfo-inside-box {
+    background-color: var(--background-lighter-color);
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    width: 98%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.dual-fileinfo-inside-box h1 {
+    font-size: 2.35rem;
+    align-self: center;
+}
+
+.dual-fileinfo-content {
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    width: 1050px;
+    height: 570px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dual-fileinfo-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dual-fileinfo-header-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--mint-color);
+}
+
+.dual-fileinfo-column-header {
+    width: 33.33%;
+    text-align: center;
+    color: var(--text-white-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.dual-fileinfo-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.dual-fileinfo-label {
+    width: 33.33%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-white-color);
+}
+
+.dual-fileinfo-value {
+    width: 33.33%;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--text-white-color);
+}
+
+.dual-fileinfo-inside-box button {
+    min-width: 150px;
+    font-size: 1.5rem;
+    background-color: var(--mint-color);
+    border: none;
+    border-radius: 15px;
+    color: var(--white-key-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* --------------------------------Tutorial page-------------------------------- */
+/* Main container */
+#tutorial-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.tutorial-synthesizer-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+#fourth-tutorial-container {
+    height: 90%;
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+}
+
+.tutorial-synthesizer-main-container.hidden {
+    display: none;
+}
+
+/* Tutorial synthesizer wrapper boxes (top/bottom) */
+.tutorial-synthesizer-wrapper-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 73%;
+    width: 100%;
+    gap: 20px;
+}
+
+#tutorial-player {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.tutorial-steps-wrapper-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+    gap: 20px;
+}
+
+#fourth-tutorial-steps-wrapper-box {
+    height: 20.5%;
+}
+
+.tutorial-left-column-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+    height: 100%;
+}
+
+/* Tutorial player wrapper box */
+#tutorial-player-files-wrapper-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    gap: 20px;
+}
+
+/* Tutorial piano outside boxes (left/right on top/bottom) */
+#tutorial-piano-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 70%;
+}
+
+.tutorial-synthesizer-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 70%;
+    height: 100%;
+}
+
+#tutorial-settings-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 56%;
+}
+
+.tutorial-info-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 30%;
+    height: 100%;
+}
+
+.tutorial-steps-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 50%;
+    height: 100%;
+}
+
+.tutorial-next-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 25%;
+    height: 100%;
+}
+
+.tutorial-back-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 25%;
+    height: 100%;
+}
+
+.tutorial-description-outside-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-lighter-color);
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 5px var(--shadow-color);
+    width: 100%;
+    height: 44%;
+}
+
+/* Tutorial synthesizer inside boxes (top/bottom on left/right) */
+.tutorial-synthesizer-inside-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 96%;
+    width: 98%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#tutorial-settings-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 93%;
+    width: 98%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+.tutorial-info-inside-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#tutorial-settings-info-box {
+    gap: 15px;
+}
+
+.tutorial-steps-inside-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    height: 96%;
+    width: 98%;
+    gap: 10px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+.tutorial-back-inside-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 20px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    transition: transform 0.1s ease;
+}
+
+.tutorial-next-inside-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    height: 96%;
+    width: 95%;
+    gap: 20px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    transition: transform 0.1s ease;
+}
+
+.tutorial-description-inside-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    width: 98%;
+    height: 93%;
+    gap: 40px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+/* Inside elements */
+.tutorial-next-inside-box button {
+    padding: 15px 5px;
+    font-size: 1.5rem;
+}
+
+.tutorial-back-inside-box button {
+    padding: 15px 5px;
+    font-size: 1.5rem;
+}
+
+.tutorial-synthesizer-inside-box h1 {
+    font-size: 2.35rem;
+}
+
+.tutorial-synthesizer-inside-box h2 {
+    font-size: 1.5rem;
+}
+
+.tutorial-info-inside-box h1 {
+    font-size: 2.35rem;
+}
+
+#tutorial-settings-info-box h1 {
+    margin-bottom: 25px;
+}
+
+/* Steps box*/
+.step-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-display {
+    display: flex;
+    background-color: var(--background-faded);
+    border: none;
+    border-radius: 200px;
+    margin: 0;
+}
+
+.step-box label {
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.step-display label {
+    font-weight: normal;
+    padding: 10px 25px;
+    font-size: 1.1rem;
+}
+
+.step-dots {
+    padding: 5px;
+    background-color: var(--mint-color);
+    border-radius: 20px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.step-dots.activated {
+    background-color: var(--wine-color);
+}
+
+.step-display.active {
+    background-color: var(--wine-color);
+}
+
+.step-display.activated {
+    background-color: var(--mint-color);
+}
+
+.tutorial-back-inside-box button:disabled {
+    background-color: var(--background-faded);
+    transform: none;
+    cursor: default;
+}
+
+.tutorial-next-inside-box button:disabled {
+    background-color: var(--background-faded);
+    transform: none;
+    cursor: default;
+}
+
+.tutorial_synth_form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.tutorial_synth_form label {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 30px);
+    gap: 5px;
+    font-weight: bold;
+}
+
+.tutorial_synth_form p {
+    text-align: justify;
+}
+
+.tutorial_synth_form input, .tutorial_synth_form select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--text-grey-color);
+    background-color: var(--background-light-color);
+    color: var(--text-white-color);
+    height: 55px;
+    font-size: 1rem;
+}
+
+.tutorial_synth_form input:focus, .tutorial_synth_form select:focus {
+    outline: none;
+    border: 2px solid var(--mint-color);
+}
+
+#tutorial_fasta_file, #tutorial_instrument_select, #tutorial_algorithm_select, #tutorial_bpm_select {
+    cursor: pointer;
+}
+
+/* File info boxes */
+.tutorial-fileinfo-table {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 15px;
+    width: 100%;
+    padding-top: 30px;
+    border-top: 2px solid var(--mint-color);
+}
+
+.tutorial-fileinfo-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tutorial-fileinfo-label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.tutorial-fileinfo-value {
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+.tutorial-info-inside-box h1 {
+    font-size: 2.35rem;
+    margin-bottom: 0;
+}
+
+/* Mapping box */
+.tutorial-mapping-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 100px;
+    border-bottom: 2px solid var(--mint-color);
+    padding-bottom: 5px;
+    margin-bottom: 0;
+}
+
+.tutorial-mapping-scroll-container {
+    width: 100%;
+    height: 370px;
+    overflow-y: auto;
+    border-bottom: 2px solid var(--wine-color);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.tutorial-mapping-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+}
+
+.tutorial-mapping-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.tutorial-mapping-key, .tutorial-mapping-transition, .tutorial-mapping-value {
+    font-size: 1.2rem;
+    color: var(--text-white-color);
+    text-align: center;
+    width: 100px;
+}
+
+.tutorial-mapping-header {
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    width: 100px;
+    flex: 1;
+}
+
+/* Description box */
+#tutorial-settings-box p {
+    text-align: justify;
+}
+
+#tutorial-algorithm-description {
+    text-align: justify;
+    overflow-y: auto;
+    font-size: 1.0rem;
+}
+
+.tutorial-description-inside-box h1 {
+    font-size: 2.35rem;
+}
+
+.tutorial-description-inside-box p {
+    font-size: 1.0rem;
+    text-align: justify;
+}
+
+/* Summary box */
+.summary-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 2px solid var(--mint-color);
+    border-bottom: 2px solid var(--wine-color);
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 10%;
+    width: 100%;
+}
+
+.summary-label {
+    flex: 1;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.summary-value {
+    flex: 1;
+    text-align: right;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#third-tutorial-summary-box p {
+    text-align: justify;
+}
+
+/* Output box */
+#tutorial-download-section {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid var(--mint-color);
+    padding-top: 25px;
+    gap: 40px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+#tutorial-download-section h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+#tutorial-download-section button {
+    display: block;
+    margin: 0 auto;
+    width: 240px;
+    height: 70px;
+    background-color: var(--wine-color);
+    color: var(--text-white-color);
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#tutorial_download_wav:disabled, #tutorial_download_midi:disabled {
+    background-color: var(--background-faded);
+    cursor: default;
+    transform: none;
+}
+
+/* Tutorial player files boxes */
+#tutorial-player-midi-box, #tutorial-player-wav-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+    height: 95%;
+    width: 98%;
+    gap: 20px;
+    border-left: 7px solid var(--mint-color);
+    border-right: 7px solid var(--wine-color);
+    border-radius: 30px;
+    text-align: left;
+    transition: transform 0.1s ease;
+}
+
+#tutorial-player-midi-box h1, #tutorial-player-wav-box h1{
+    font-size: 2.35rem;
+}
