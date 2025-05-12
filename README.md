@@ -147,10 +147,13 @@ The application is organized into directories, structured as follows:
 - **`soundfont/`** – Stores the SoundFont file used to produce audio.
   - `soundfont.sf2`
 
-- **`examples/`** – Includes example DNA and audio files.
+- **`examples/`** – Includes example DNA (BRCA1 - original gene/BRCA1-43045291A>C - mutated gene) and audio files.
+  - `BRCA1.fasta`
+  - `BRCA1-43045291A>C.fasta`
   - `sequence.fasta`
   - `sequence.mid`
   - `sequence.wav`
+
 
 - **`web/`** – Contains the graphical web interface.
   - `index.html`
@@ -281,13 +284,14 @@ You are free to use, modify, and distribute this software under the terms of the
 
 ### Third-party Libraries and Tools
 
-Genomelody uses the following open-source components:
+Genomelody uses the following open-source components to run or compile the executable:
 
 - [FluidSynth](https://github.com/FluidSynth/fluidsynth) – **LGPL-2.1+**
+- [GeneralUser GS SoundFont](https://schristiancollins.com/generaluser.php) – **Freeware License v2.0** by S. Christian Collins
 - [Eel](https://github.com/python-eel/Eel) – **MIT License**
 - [Mido](https://github.com/mido/mido) – **MIT License**
-- [midi2audio](https://github.com/bzamecnik/midi2audio) – **MIT License**
-- [GeneralUser GS SoundFont](https://schristiancollins.com/generaluser.php) – **Freeware License v2.0** by S. Christian Collins
+- [Midi2audio](https://github.com/bzamecnik/midi2audio) – **MIT License**
+- [PyInstaller](https://github.com/pyinstaller/pyinstaller) – **GPL-2.0**
 
 All libraries and tools are used in accordance with their licenses.
 
