@@ -2595,7 +2595,7 @@ button:hover, button:focus {
     #download_section button {
         display: block;
         margin: 0 auto;
-        width: 225px;
+        width: 230px;
         height: 70px;
         background-color: var(--wine-color);
         transition: transform 0.1s ease;
@@ -3601,7 +3601,7 @@ button:hover, button:focus {
     #download_section button {
         display: block;
         margin: 0 auto;
-        width: 225px;
+        width: 230px;
         height: 70px;
         background-color: var(--wine-color);
         transition: transform 0.1s ease;
@@ -4351,7 +4351,7 @@ button:hover, button:focus {
     #tutorial-download-section button {
         display: block;
         margin: 0 auto;
-        width: 225px;
+        width: 230px;
         height: 70px;
         background-color: var(--wine-color);
         color: var(--text-white-color);
