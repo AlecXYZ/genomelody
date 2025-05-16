@@ -32,8 +32,8 @@ main p {
 
 html, body {
     /* Responsive design (Desktop app) - Position fixed on minimal height and width */
-    min-height: 900px;
-    min-width: 1300px;
+    min-height: 1000px;
+    min-width: 1320px;
     width: 100vw;
     height: 100vh;
     background-color: var(--background-lighter-color);
@@ -426,6 +426,7 @@ button:hover, button:focus {
     gap: 35px;
     width: 100%;
     align-items: flex-start;
+    overflow-y: auto;
 }
 
 #download_section h2 {
@@ -437,7 +438,7 @@ button:hover, button:focus {
 #download_section button {
     display: block;
     margin: 0 auto;
-    width: 240px;
+    width: 225px;
     height: 70px;
     background-color: var(--wine-color);
     transition: transform 0.1s ease;
@@ -2127,6 +2128,7 @@ button:hover, button:focus {
     gap: 40px;
     width: 100%;
     align-items: flex-start;
+    overflow-y: auto;
 }
 
 #tutorial-download-section h2 {
@@ -2138,7 +2140,7 @@ button:hover, button:focus {
 #tutorial-download-section button {
     display: block;
     margin: 0 auto;
-    width: 240px;
+    width: 225px;
     height: 70px;
     background-color: var(--wine-color);
     color: var(--text-white-color);
